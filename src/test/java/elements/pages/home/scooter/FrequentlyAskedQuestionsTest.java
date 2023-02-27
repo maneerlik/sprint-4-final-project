@@ -2,9 +2,7 @@ package elements.pages.home.scooter;
 
 import config.AppConfig;
 import extensions.WebDriverFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +17,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 @RunWith(Parameterized.class)
 public class FrequentlyAskedQuestionsTest {
-    private WebDriver driver;
+    private static WebDriver driver;
 
     private final String questionButtonText;
     private final String expectedTextAnswerLabel;
@@ -57,22 +55,21 @@ public class FrequentlyAskedQuestionsTest {
         };
     }
 
-    @Before
-    public void setup() {
+    @BeforeClass
+    public static void setup() {
         driver = WebDriverFactory.getDriver(AppConfig.HOME_SCOOTER_URL);
     }
 
     @Test
     public void frequentlyAskedQuestions() {
         assertThat("текст ответа отличается", expectedTextAnswerLabel, is(new ScooterHomePage(driver)
-                .clickCookieButton()
                 .clickQuestionFAQButton(questionButtonText)
                 .getTextOpenedAnswerFAQLabel()
         ));
     }
 
-    @After
-    public void teardown() {
+    @AfterClass
+    public static void teardown() {
         driver.quit();
     }
 }

@@ -4,7 +4,9 @@ import config.WebDriverConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.time.Duration;
 
@@ -28,16 +30,16 @@ public class WebDriverFactory {
         switch(browserName) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                driver = new ChromeDriver(new ChromeOptions().addArguments("--headless"));
                 break;
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
+                driver = new FirefoxDriver(new FirefoxOptions().addArguments("--headless"));
                 break;
             default: throw new RuntimeException("Browser " + browserName + " not exist");
         }
 
-        driver.manage().window().maximize();
+        // driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(WebDriverConfig.WAIT_TEN_SECONDS_TIMEOUT));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(WebDriverConfig.WAIT_TWO_SECONDS_TIMEOUT));
         driver.get(url);
