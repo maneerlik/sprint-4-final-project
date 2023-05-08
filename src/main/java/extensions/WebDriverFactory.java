@@ -30,7 +30,8 @@ public class WebDriverFactory {
         switch(browserName) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver(new ChromeOptions().addArguments("--headless"));
+                // --remote-allow-origins=* - для решения проблем с версией 111
+                driver = new ChromeDriver(new ChromeOptions().addArguments("--headless", "--remote-allow-origins=*"));
                 break;
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();

@@ -21,7 +21,7 @@
   </ol>
 </details>
 
-### About The Project
+## About The Project
 
 Необходимо написать автотесты для учебного сервиса «Яндекс.Самокат» (https://qa-scooter.praktikum-services.ru/). Его разработали специально для студентов.
 
@@ -41,11 +41,11 @@
 
 Нужно написать тесты с разными данными: минимум два набора. Какие именно данные использовать - на твоё усмотрение.
 
-### Usage
+## Usage
 
 Для выбора браузера, в котором необходимо запустить тесты, в параметрах запуска (Environment variable) передать наименование браузера в формате var=value (н.п. `browser=chrome` или `browser=firefox`).
 
-### Tests
+## Tests
 * `ClickOrderButtonsTest` - тестирование кнопок заказа
 * `ClickScooterLogoTest` - тестирование логотипа 'Самокат'
 * `ClickYandexLogoTest` - тестирование логотипа 'Яндекс'
@@ -54,7 +54,7 @@
 * `CheckErrorNotFoundTrackTest` - тестирование трека несуществующего заказа
 * `PlaceAnOrderPositiveTest` - тестирование позитивного флоу заказа
 
-### Tech Stack
+## Tech Stack
 
 [![Java11][java]][javadoc-url]
 [![Selenium][selenium]][selenium-url]
